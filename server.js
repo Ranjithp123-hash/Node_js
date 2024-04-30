@@ -39,7 +39,7 @@ fs.appendFile("greeting.txt", "Hello " + user.username + " !\n", () => {
   console.log("file is created");
 });
 
-let data = ["person", "person", 1, 2, 3, 2, 1, "name", "age", "2"];
+let data = ["person", "person", 1, 2, 3, 2, 1, "name", "age", "2"]
 
 let filter = _.uniq(data);
 
@@ -67,6 +67,9 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
 
+require('dotenv').config();
+
+const PORT = process.env.PORT || 3008
 // import the router  files
 
 const personRoutes = require('./routers/personRouters');
@@ -76,8 +79,10 @@ const MenuItems = require('./routers/Menuroutes')
 
 app.use('/person',personRoutes);
 
-app.use('/menu', MenuItems)
+app.use('/menu', MenuItems);
 
-app.listen(3006, () => {
+
+
+app.listen(PORT, () => {
   console.log(`listening on port ${3006}`);
 });
